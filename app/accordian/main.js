@@ -7,9 +7,9 @@ function hideAll(){
     text.forEach(function(textHidden){
     textHidden.style.display = 'none';
 
-function printMe(item){
+function printMe(btn){
 
-    item.addEventListener('click',function(){
+    btn.addEventListener('click',function(){
 
         //click & select the button
 
