@@ -5,60 +5,49 @@ hide all cards
 show cards with specific class name
 */
 
-//1. write click event for each tag 
+//1. write click event for each tag
 
-let filterWrapper  = document.getElementById('filter-1'),
-    allLinks = filterWrapper.querySelectorAll('.filter-link');
+let filterWrapper = document.getElementById("filter-1"),
+  allLinks = filterWrapper.querySelectorAll(".filter-link");
 
-function hideCards(){
-    let cards = document.querySelectorAll('.card');
+function hideCards() {
+  let cards = document.querySelectorAll(".card");
 
-    cards.forEach(function(cardAll){
-        cardAll.style.display = 'none';
-    });
+  cards.forEach(function (cardAll) {
+    cardAll.style.display = "none";
+  });
 }
 
-function showCard(classType){
+function showCard(classType) {
+  if (classType == "all") {
+    cardType = ".card";
+  } else {
+    cardType = "." + classType;
+  }
 
-    if(classType == "all"){
-        cardType = '.card';
-    }
-    else{
-        cardType = '.'+classType;
-    }
-    
-    let cardTypeAll = filterWrapper.querySelectorAll(cardType);
-        
-    cardTypeAll.forEach(function(cardEach){
-        cardEach.style.display = 'block';
-    })
+  let cardTypeAll = filterWrapper.querySelectorAll(cardType);
 
+  cardTypeAll.forEach(function (cardEach) {
+    cardEach.style.display = "block";
+  });
 }
 
+function printMe(item) {
+  // write click event for a tag
 
-function printMe(item){
+  item.addEventListener("click", function () {
+    // get class name of this element
 
-        // write click event for a tag
+    let currentMoment = this,
+      selectClass = currentMoment.classList[1];
 
-    item.addEventListener('click',function(){
+    console.log(currentMoment);
 
-        // get class name of this element
+    console.log(selectClass);
 
-        let currentMoment = this,
-            selectClass = currentMoment.classList[1];       
-
-            console.log(currentMoment);
-        
-        console.log(selectClass);
-
-        hideCards();
-        showCard(selectClass);
-
-       
-    });
-
-    
+    hideCards();
+    showCard(selectClass);
+  });
 }
-
 
 allLinks.forEach(printMe);
